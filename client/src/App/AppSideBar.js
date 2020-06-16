@@ -1,21 +1,15 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import SideBar from "../Components/SideBar/SideBar";
 import HomeIcon from "@material-ui/icons/Home";
 import AddIcon from "@material-ui/icons/Add";
+import SideBar from "../Components/SideBar/SideBar";
 import Utils from "../Utils/";
 import BlurredWrapper from "../Components/Containers/BlurredWrapper";
-const { isDef, isArr, isStr, classes } = Utils;
+import useKit from "../Utils/CompKit";
+
+const { classes } = Utils;
 
 function AppSideBar(props) {
-  let history = useHistory();
-  const goToPage = function (page) {
-    if (isDef(history)) {
-      history.push(page);
-    } else {
-      console.log("history not defined");
-    }
-  };
+  const { goToPage } = useKit();
 
   return (
     <SideBar>

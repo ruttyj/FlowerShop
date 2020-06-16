@@ -1,37 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 
-import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
-import RelLayer from "../../../Components/Layers/RelLayer";
-import AbsLayer from "../../../Components/Layers/AbsLayer";
-import FillContainer from "../../../Components/Containers/FillContainer/FillContainer";
-import FillContent from "../../../Components/Containers/FillContainer/FillContent";
-import FillFooter from "../../../Components/Containers/FillContainer/FillFooter";
-import Utils from "../../../Utils/";
-import config from "../../../config";
+
 import PageWrapper from "../../../Components/Containers/PageWrapper";
 import DollarSymbol from "../../../Components/Currencies/DollarSymbol";
 import BlurredWrapper from "../../../Components/Containers/BlurredWrapper";
 import ProductController from "../../../Controllers/ProductController";
 import AddToCartButton from "../../../Components/Buttons/AddToCartButton";
-import LoadingSquare from "../../Placeholders/LoadingSquare";
-import "./style.scss";
-const {
-  isFunc,
-  isStr,
-  isDef,
-  isArr,
-  classes,
-  getNestedValue,
-  isDefNested,
-} = Utils;
+import Utils from "../../../Utils/";
+import "./ViewProduct.scss";
+const { isDef, classes, getNestedValue, isDefNested } = Utils;
 
 const productController = ProductController();
 
 const Comp = (props) => {
+  // State management
   const [state, setState] = useState({});
   const [hasRequested, sethasRequested] = useState(false);
+
+  // Initialize
   const { id } = props;
   useEffect(() => {
     if (isDef(id) && !hasRequested) {
@@ -45,14 +32,10 @@ const Comp = (props) => {
   }, [id]);
 
   const isLoaded = isDefNested(state, "product");
-
-  let product = getNestedValue(state, "product", {});
+  const product = getNestedValue(state, "product", {});
 
   return (
-    <PageWrapper
-      isLoading={!isLoaded}
-      classes={["full-width", "product-details-page"]}
-    >
+    <PageWrapper isLoading={!isLoaded} classes={["full-width", "large-card"]}>
       <div {...classes("full-width", "card-outter")}>
         <BlurredWrapper classes={"full"}>
           <div {...classes("card-inner", "center-center")}>

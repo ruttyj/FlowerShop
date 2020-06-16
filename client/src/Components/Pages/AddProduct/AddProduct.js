@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import useKit from "../../../Utils/CompKit";
 import TextareaAutosize from "@material-ui/core/TextareaAutosize";
+
 import FillContainer from "../../../Components/Containers/FillContainer/FillContainer";
 import FillContent from "../../../Components/Containers/FillContainer/FillContent";
 import PageWrapper from "../../../Components/Containers/PageWrapper";
 import BlurredWrapper from "../../../Components/Containers/BlurredWrapper";
 import ProductController from "../../../Controllers/ProductController";
-import LoadingSquare from "../../Placeholders/LoadingSquare";
 import "./AddProduct.scss";
+
+import useKit from "../../../Utils/CompKit";
 import Utils from "../../../Utils/";
 import config from "../../../config";
-const { isDef, classes, getNestedValue, setImmutableValue } = Utils;
+const { classes, getNestedValue, setImmutableValue } = Utils;
 
 const productController = ProductController();
 
 const Comp = (props) => {
   const { goToPage } = useKit();
 
+  // State Management
   const [state, _setState] = useState({
     form: {
       title: "Product Title",
@@ -29,19 +31,23 @@ const Comp = (props) => {
     _setState(setImmutableValue(state, path, value));
   const getNestedState = (path, fallback = null) =>
     getNestedValue(state, path, fallback);
+
+  // Initialize component
   const [isInit, setIsInit] = useState(false);
   if (!isInit) {
     setIsInit(true);
+
+    // Simulate a loading time
     setTimeout(() => {
       setNestedState("isLoaded", true);
-    }, 500);
+    }, 1000);
   }
   const isLoaded = getNestedState("isLoaded", false);
 
   const handleSave = async (e) => {
     e.preventDefault();
-    let data = await productController.doTheThing(state.form);
-    console.log(data);
+    await productController.storeProduct(state.form);
+    alert("Product has been created");
   };
 
   const handleCancel = async (e) => {
@@ -50,10 +56,7 @@ const Comp = (props) => {
   };
 
   return (
-    <PageWrapper
-      isLoading={!isLoaded}
-      classes={["full-width", "product-details-page"]}
-    >
+    <PageWrapper isLoading={!isLoaded} classes={["full-width", "large-card"]}>
       <div {...classes("full-width", "card-outter")}>
         <BlurredWrapper classes={"full"}>
           <div {...classes("card-inner", "center-center")}>

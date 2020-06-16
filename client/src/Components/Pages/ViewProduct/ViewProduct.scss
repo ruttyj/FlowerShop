@@ -1,0 +1,42 @@
+.large-card {
+  .card-inner {
+    .img {
+      background-image: var(--product-image);
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      width: 100%;
+      height: 100%;
+    }
+    /* make iamge square*/
+    .img:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+    .product-display {
+      display: inline-flex;
+      min-width: 200px;
+      max-width: 400px;
+      width: 50%;
+      min-width: 200px;
+    }
+    .product-descript {
+      padding-left: 20px;
+      width: 50%;
+      min-width: 200px;
+
+      .info-block {
+        border-bottom: 1px solid grey;
+        margin-bottom: 20px;
+      }
+      .label {
+        font-weight: bold;
+      }
+      .price {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}

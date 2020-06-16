@@ -1,6 +1,6 @@
-const pool = require("../db");
 const ProductRepository = require("../Repositories/ProductRepository");
 
+// Contains all logic for controlling products on the server side
 function ProductController() {
   const mProductRepository = ProductRepository();
 

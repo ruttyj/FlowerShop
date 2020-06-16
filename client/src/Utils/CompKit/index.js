@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import Utils from "../../Utils/";
-const { getNestedValue, isDef, isArr, isStr, classes } = Utils;
+const { isDef } = Utils;
 
 function CompKit() {
   let history = useHistory();

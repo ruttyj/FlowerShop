@@ -115,7 +115,7 @@ function setImmutableValue(ref, _path, value) {
   }
 }
 
-// allow for * many class names
+// Flatten the mess of classes given as props into a usable attribute
 // @usage <div {...classes(["a1", "b1", ["c1", ["d1"]]], "e1", ["f1"])} /> produces <div className={classNames("a1", "b1", "c1", "d1", "e1", "f1")}/>
 function classes(...args) {
   let _args = [];

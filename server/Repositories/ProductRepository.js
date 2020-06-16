@@ -1,6 +1,7 @@
 const pool = require("../db");
 const isDef = (v) => v !== undefined && v !== null;
 
+// Encapsulate the DB access for Products
 function ProductRepository() {
   async function createItem({ title, description, price, image_url }) {
     price = isDef(price) ? parseFloat(price) : 0;

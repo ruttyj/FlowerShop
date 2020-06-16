@@ -21,7 +21,6 @@
     background: #ffffffb5;
     box-shadow: -5px 5px 5px #00000017;
     overflow: visible;
-    /*padding: 5px;*/
     color: black;
 
     .product-inner {
@@ -43,9 +42,6 @@
       }
     }
 
-    button {
-      cursor: pointer;
-    }
     .in-cart-indicator {
       transition: all 150ms linear;
       opacity: 0;

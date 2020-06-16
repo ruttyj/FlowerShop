@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./ListProducts.scss";
 import { Link } from "react-router-dom";
 import StarRatings from "react-star-ratings";
+
 import RelLayer from "../../../Components/Layers/RelLayer";
 import AbsLayer from "../../../Components/Layers/AbsLayer";
 import FillContainer from "../../../Components/Containers/FillContainer/FillContainer";
@@ -13,24 +14,48 @@ import DollarSymbol from "../../../Components/Currencies/DollarSymbol";
 import BlurredWrapper from "../../../Components/Containers/BlurredWrapper";
 import LoadingSquare from "../../../Components/Placeholders/LoadingSquare";
 import ProductController from "../../../Controllers/ProductController";
-import Utils from "../../../Utils/";
-import config from "../../../config";
 import AddToCartButton from "../../../Components/Buttons/AddToCartButton/";
 import RemoveFromCartButton from "../../../Components/Buttons/RemoveFromCartButton/";
-const {
-  isDef,
-  isDefNested,
-  classes,
-  setImmutableValue,
-  getNestedValue,
-} = Utils;
-const classNames = require("classnames");
+
+import Utils from "../../../Utils/";
+import config from "../../../config";
+
+const { isDef, isDefNested, classes, setImmutableValue } = Utils;
+const els = (v, alt) => (isDef(v) && v !== "" ? v : alt);
 const productController = ProductController();
 
-const Product = (props) => {
-  const [isInCart, setIsInCart] = useState(false);
+function Featured(props) {
+  const [state, _setState] = useState({});
+  const setNestedState = (path, value) =>
+    _setState(setImmutableValue(state, path, value));
 
-  const els = (v, alt) => (isDef(v) && v !== "" ? v : alt);
+  const [isInit, setIsInit] = useState(false);
+  if (!isInit) {
+    setIsInit(true);
+    productController.fetchProductList().then((data) => {
+      setNestedState("products", data);
+    });
+  }
+
+  const isLoaded = isDefNested(state, "products");
+  let contents = "";
+
+  if (isLoaded) {
+    contents = (
+      <>
+        {state.products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
+      </>
+    );
+  } else {
+    contents = <LoadingSquare />;
+  }
+  return <PageWrapper classes={"product-browser"}>{contents}</PageWrapper>;
+}
+
+function Product(props) {
+  const [isInCart, setIsInCart] = useState(false);
 
   const { product } = props;
   let linkTo = `/product/${product.id}`;
@@ -66,7 +91,7 @@ const Product = (props) => {
               </div>
             </Link>
 
-            <div className={classNames("product-rating")}>
+            <div {...classes("product-rating")}>
               <StarRatings
                 rating={isDef(product.rating) ? parseFloat(product.rating) : 0}
                 numberOfStars={5}
@@ -79,38 +104,6 @@ const Product = (props) => {
       </div>
     </BlurredWrapper>
   );
-};
-
-function delay() {}
-
-const Featured = (props) => {
-  const [state, _setState] = useState({});
-  const setNestedState = (path, value) =>
-    _setState(setImmutableValue(state, path, value));
-
-  const [isInit, setIsInit] = useState(false);
-  if (!isInit) {
-    setIsInit(true);
-    productController.fetchProductList().then((data) => {
-      setNestedState("products", data);
-    });
-  }
-
-  const isLoaded = isDefNested(state, "products");
-  let contents = "";
-
-  if (isLoaded) {
-    contents = (
-      <>
-        {state.products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </>
-    );
-  } else {
-    contents = <LoadingSquare />;
-  }
-  return <PageWrapper classes={"product-browser"}>{contents}</PageWrapper>;
-};
+}
 
 export default Featured;
