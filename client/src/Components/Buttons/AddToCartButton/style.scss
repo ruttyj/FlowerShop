@@ -1,0 +1,15 @@
+.primary-action-btn {
+  border: 0px solid transparent;
+  background-color: #17b169;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-image: linear-gradient(45deg, #1752b1, #13b58d);
+  transition: all 500ms linear;
+  cursor: pointer;
+}
+
+.primary-action-btn:hover {
+  background-image: linear-gradient(45deg, #1776b1, #13b58d);
+}

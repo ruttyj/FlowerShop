@@ -1,0 +1,22 @@
+.sidebar-mini {
+  width: var(--sizebar-width);
+  height: 100%;
+  overflow: auto;
+
+  .button {
+    width: 100%;
+    height: var(--sizebar-width);
+  }
+}
+.sidebar-mini {
+  color: white;
+}
+
+.sidebar-space-holder {
+  content: "";
+  width: var(--sizebar-width);
+}
+
+.scroll {
+  overflow: auto;
+}

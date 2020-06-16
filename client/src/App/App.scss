@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bkgd-image: url(https://wallpapershome.com/images/pages/pic_h/16728.jpeg);
+  --bkgd-blur: 15px;
+  --sizebar-width: 75px;
+  --bkgd-filter: blur(15px);
+}
+.main_bkgd {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f9fbf8;
+}
+
+a,
+a:hover,
+a:active {
+  color: black;
+  text-decoration: none;
+}
+
+#app {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bkgd-image: url(https://wallpapershome.com/images/pages/pic_h/16728.jpeg);
+  --bkgd-blur: 15px;
+}
+html,
+body,
+.main_bkgd {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  flex-grow: 1;
+}
+
+.button {
+  transition: all 150ms linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: #00000099;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms linear;
+}
+[contenteditable] {
+  outline: 1px solid transparent;
+}
+[contenteditable]:focus {
+  outline: 1px solid #0aa91ec7;
+}
+.padding-v {
+  padding: 20px 0px;
+}
+.masthead {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff40;
+  width: 500px;
+  overflow: hidden;
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #00000066;
+  }
+  .tint-bkgd {
+    background-color: #00000066;
+  }
+  .body {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .margin {
+    margin: 4px 0px 0px 0px;
+  }
+}
+
+/*
+-webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0) scale(1.0, 1.0);
+    transform: translateZ(0);
+*/
+.blurred_bkgd {
+  position: relative;
+  overflow: hidden;
+
+  .focus_content {
+    z-index: 3;
+  }
+}
+.blurred_bkgd:before,
+.blurred_bkgd:after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 2;
+  top: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body,
+.blurred_bkgd:before,
+.blurred_bkgd:after {
+  background-image: var(--bkgd-image);
+  background-size: cover;
+  background-position: center, center;
+  background-attachment: fixed;
+}
+
+.blurred_bkgd:after {
+  z-index: 2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-filter: var(--bkgd-filter);
+  filter: var(--bkgd-filter);
+  backdrop-filter: var(--bkgd-filter);
+}
+
+.masthead-shell {
+  padding: 4px;
+  background-color: #00000033;
+}
+
+.masthead-shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+}
+
+.resizable {
+  resize: both;
+  overflow: auto;
+}
+
+.tinted,
+.tinted-dark {
+  background-color: #000000bf;
+}
+
+.tinted-light {
+  background-color: #ffffff50;
+  background-image: linear-gradient(0deg, #ffffff8c, #ffffff33);
+}
+
+.app-header {
+  width: 100%;
+  height: 75px;
+  .title {
+    font-size: 24px;
+    color: #2b6d98;
+    font-weight: bold;
+  }
+  .button {
+    height: 75px;
+    width: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .button:hover {
+    background-color: #ffffff50;
+  }
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.main-content {
+  padding-top: 25px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.star-container svg {
+  height: 10px;
+}
+
+.loader-wrapper {
+  width: 100%;
+  background-color: white;
+}

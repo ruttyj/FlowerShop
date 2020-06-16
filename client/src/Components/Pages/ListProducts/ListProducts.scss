@@ -1,0 +1,108 @@
+.product-browser {
+  flex-wrap: wrap;
+  width: 100%;
+
+  .blurred_bkgd,
+  .blurred_bkgd:before,
+  .blurred_bkgd:after {
+    border-radius: 15px;
+  }
+  .product-outter {
+    display: inline-flex;
+    box-sizing: border-box;
+    width: 30%;
+    min-width: 200px;
+    box-shadow: -5px 5px 5px #00000017;
+    height: fit-content;
+    margin: 8px;
+    border: 2px solid #ffffff00;
+    border-style: outset;
+    border-radius: 15px;
+    background: #ffffffb5;
+    box-shadow: -5px 5px 5px #00000017;
+    overflow: visible;
+    /*padding: 5px;*/
+    color: black;
+
+    .product-inner {
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 5px;
+      background-color: #ffffffaa;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .product-inner:hover {
+      .product-hover {
+        opacity: 1;
+      }
+      .product-image img {
+        opacity: 0.25;
+      }
+    }
+
+    button {
+      cursor: pointer;
+    }
+    .in-cart-indicator {
+      transition: all 150ms linear;
+      opacity: 0;
+      z-index: 2;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      height: 50px;
+      width: 50px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      background-color: red;
+      font-size: 12px;
+    }
+    .in-cart-indicator.active {
+      opacity: 1;
+    }
+    a {
+      text-decoration: none;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .product-hover {
+      opacity: 0;
+      transition: all 150ms linear;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-image {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      opacity: 1;
+
+      img {
+        opacity: 1;
+        transition: all 150ms linear;
+        width: 90%;
+      }
+    }
+
+    .product-title {
+      font-weight: bold;
+      text-align: center;
+    }
+    .product-price {
+      text-align: center;
+    }
+    .product-rating {
+      text-align: center;
+    }
+  }
+}

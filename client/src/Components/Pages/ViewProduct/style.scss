@@ -1,0 +1,85 @@
+$breakpoint-cell: 400px;
+:root {
+  --product-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png);
+}
+
+.product-details-page {
+  .card-outter {
+    padding: 20px;
+  }
+  .card-inner {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    background-color: #ffffffcc;
+    box-shadow: -5px 5px 5px #00000017;
+
+    .img {
+      background-image: var(--product-image);
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      width: 100%;
+      height: 100%;
+    }
+    /* make iamge square*/
+    .img:after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+    .product-display {
+      display: inline-flex;
+      min-width: 200px;
+      max-width: 400px;
+      width: 50%;
+      min-width: 200px;
+    }
+    .product-descript {
+      padding-left: 20px;
+      width: 50%;
+      min-width: 200px;
+
+      .info-block {
+        border-bottom: 1px solid grey;
+        margin-bottom: 20px;
+      }
+      .label {
+        font-weight: bold;
+      }
+      .price {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .product-details-page {
+    .card-inner {
+      .product-display {
+        width: 100%;
+      }
+      .product-descript {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product-details-page {
+    .card-inner {
+      .product-display {
+        width: 100%;
+      }
+      .product-descript {
+        width: 100%;
+      }
+    }
+  }
+}
