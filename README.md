@@ -35,7 +35,9 @@ Be default the values are as follows:
 |password | root
 |database | Flowers
 
-Once the database is running simply execute the following shell scripts to get up and running
+Once the database is running run the `database.sql` code to create the database and table structure. Data can be imported to the database with the data in `import_data.csv`
+
+Once the database is setup with the initial data simply execute the following shell scripts to get up and running
 
     ./install.sh
 
