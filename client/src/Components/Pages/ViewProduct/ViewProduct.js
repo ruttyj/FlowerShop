@@ -37,7 +37,7 @@ const Comp = (props) => {
   return (
     <PageWrapper isLoading={!isLoaded} classes={["full-width", "large-card"]}>
       <div {...classes("full-width", "card-outter")}>
-        <BlurredWrapper classes={"full"}>
+        <BlurredWrapper classes={"full-width"}>
           <div {...classes("card-inner", "center-center")}>
             <>
               <div
